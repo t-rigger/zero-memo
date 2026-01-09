@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: shimmering_kepler_production
-  username: shimmering_kepler
-  password: <%= ENV["SHIMMERING_KEPLER_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
