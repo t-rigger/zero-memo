@@ -1,0 +1,42 @@
+<div data-controller="memo-editor"
+     data-turbo="false"
+     data-memo-editor-memo-id-value="<%= @memo.id %>"
+     data-memo-editor-time-limit-value="60"
+     data-memo-editor-auto-submit-url-value="<%= memo_path(@memo) %>">
+  
+  <!-- プログレスバー -->
+  <div class="timer-bar">
+    <div class="progress" data-memo-editor-target="progressBar"></div>
+  </div>
+  
+  <!-- タイトル入力 -->
+  <div class="title-section">
+    <input type="text" 
+           placeholder="タイトル（任意）" 
+           data-memo-editor-target="titleInput"
+           maxlength="100"
+           autocomplete="off"
+           autofocus>
+    <span class="page-indicator"><%= @memo.position %> / 10</span>
+  </div>
+  
+  <!-- 行入力エリア -->
+  <div class="lines-container">
+    <% @lines.each_with_index do |line, index| %>
+      <input type="text" 
+             value="<%= line.content %>"
+             readonly
+             tabindex="-1"
+             class="line-input confirmed"
+             style="pointer-events: none;"
+             data-memo-editor-target="lineInput">
+    <% end %>
+    
+    <!-- 初期入力行 -->
+    <input type="text" 
+           class="line-input"
+           data-memo-editor-target="lineInput"
+           data-action="keydown->memo-editor#handleKeydown"
+           autocomplete="off">
+  </div>
+</div>

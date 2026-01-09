@@ -1,0 +1,29 @@
+<div style="text-align: center; margin-top: 100px;">
+  <h1>ZeroMemo</h1>
+  <p>1セット10枚、制限時間60秒の思考トレーニング</p>
+  
+  <%= button_to "今すぐ始める", memo_sets_path, method: :post, class: "btn btn-primary" %>
+</div>
+
+<style>
+.btn {
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+</style>

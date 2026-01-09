@@ -1,0 +1,144 @@
+<div class="completion-screen">
+  <h1>🎉 10枚完了しました！</h1>
+  
+  <% if flash[:alert] %>
+    <div class="alert alert-error"><%= flash[:alert] %></div>
+  <% end %>
+  
+  <div class="options">
+    <div class="option-card">
+      <h2>📧 メールで受け取る</h2>
+      <p>PDFをメールでお送りします</p>
+      
+      <%= form_with url: send_email_memo_set_path(@memo_set), method: :post, local: true, class: "email-form" do %>
+        <%= email_field_tag :email, nil, 
+            placeholder: "メールアドレス",
+            required: true,
+            class: "email-input" %>
+        <%= submit_tag "送信", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    
+    <div class="option-divider">または</div>
+    
+    <div class="option-card">
+      <h2>📥 今すぐダウンロード</h2>
+      <p>PDFを直接ダウンロードします</p>
+      
+      <%= link_to "ダウンロード", 
+                  download_memo_set_path(@memo_set), 
+                  class: "btn btn-secondary",
+                  data: { turbo: false } %>
+    </div>
+  </div>
+  
+  <div class="footer-actions">
+    <%= link_to "新しいセットを開始", root_path, class: "link-text" %>
+  </div>
+</div>
+
+<style>
+.completion-screen {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.completion-screen h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.alert {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.alert-error {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.option-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.option-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.option-card p {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.option-divider {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.email-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.email-input {
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 250px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: #475569;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #334155;
+}
+
+.footer-actions {
+  margin-top: 30px;
+}
+
+.link-text {
+  color: #64748b;
+  text-decoration: underline;
+}
+</style>

@@ -1,0 +1,140 @@
+/* === Focus Mode === */
+body.focus-mode nav,
+body.focus-mode footer,
+body.focus-mode .sidebar {
+  display: none !important;
+}
+
+/* === Timer Progress Bar === */
+.timer-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #e0e0e0;
+  z-index: 9999;
+}
+
+.timer-bar .progress {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #FF5722);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* === Title Section === */
+.title-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #FAFAFA;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.title-section input {
+  flex: 1;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  color: #333;
+  outline: none;
+}
+
+.page-indicator {
+  font-size: 18px;
+  color: #666;
+  font-weight: bold;
+}
+
+/* === Lines Container === */
+.lines-container {
+  padding: 40px;
+  background: #FAFAFA;
+  min-height: 100vh;
+}
+
+.line-input {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #333;
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.line-input:focus {
+  border-bottom-color: #4CAF50;
+}
+
+.line-input.confirmed {
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* === Page Transition === */
+body.page-transition {
+  animation: slideOutLeft 0.3s ease-out forwards;
+}
+
+@keyframes slideOutLeft {
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* === Completion Screen === */
+.completion-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #FAFAFA;
+  text-align: center;
+}
+
+.completion-screen h1 {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.btn {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  background: #4CAF50;
+  color: white;
+}
+
+.btn-secondary {
+  background: #E0E0E0;
+  color: #333;
+}
+
+.email-notice {
+  color: #666;
+  font-size: 14px;
+  margin-top: 20px;
+}

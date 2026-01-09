@@ -1,0 +1,21 @@
+<% @memo_set.memos.each do |memo| %>
+  <div class="memo-page">
+    <div class="memo-header">
+      <h1 class="memo-title"><%= memo.title.presence || "（タイトルなし）" %></h1>
+      <span class="memo-meta">
+        <%= memo.position %>/10 | 
+        <%= memo.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+      </span>
+    </div>
+    
+    <div class="memo-lines">
+      <% memo.lines.each do |line| %>
+        <p class="memo-line">・<%= line.content %></p>
+      <% end %>
+    </div>
+  </div>
+  
+  <% unless memo.is_last? %>
+    <div style="page-break-after: always;"></div>
+  <% end %>
+<% end %>
